@@ -79,14 +79,7 @@ $pdbtotal = $count;
 ### Find contacts in each pdb ###
 foreach $pdb(@pdbfiles){
 	chomp $pdb;
-	# take the 2nd line of the pdb file
-	$temp = `head -2 $pdb | tail -1`;
-	chomp $temp;
-	for($temp) {  s/^\s+//; s/\s+$//; s/\s+/ /g; }
-	@templine = split(/ /,$temp);
-	######## why is Walter saving this variable $currenttime???? ########
-	$currenttime = $templine[11];
-
+	
 	### Open/Read pdb line and save protein coordinates ###
 	open(PDB,"<$pdb") || die "\n\tError reading from $pdb\n\n";
 	$i = 0;
